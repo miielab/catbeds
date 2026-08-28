@@ -232,32 +232,6 @@ Centeredness(news, "queer", "heterosexual") %>%
 ggsave("../figures/figure_5b.pdf", width=8.7, height=4, units="cm")
 
 
-### ========================================
-### Graph Variance
-### ========================================
-# variance <- read.csv("../../../../text_analysis/supplemental_data/variance_scores/removed_missing_ppl_variance_n25.csv")
-variance <- read.csv("../../../../text_analysis/supplemental_data/variance_scores/variance_n25.csv")
-# load("../data/children_ALC_variance.Rdata")
-variance %<>% bind_rows(variance_d) %>% bind_rows(variance_m)
-variance$bundle_type %<>% str_replace("_all_famous","")
-variance$race_gender %<>% str_replace("_"," ") %>% str_to_title() %>% as.factor()
-variance$name %<>% str_replace("_"," ") %>% str_to_title() %>% as.factor()
-variance %<>% separate(bundle_type, c("bundle", "collection"), sep="_")
-variance$collection %<>% str_to_title()
-variance$bundle %<>% str_to_title()
-
-
-ggplot(variance) + 
-  geom_boxplot(aes(y=variance, x=1, fill=bundle), color="black") + 
-  facet_grid(cols=vars(race_gender)) +
-  theme(axis.title.x = element_blank(), 
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank()) +
-  ylab("Variability") +
-  scale_fill_manual(values=c("#0F9E86","#DCA708")) 
-ggsave("../figures/figure_6.pdf", width=8.7, height=7, units="cm")
-
-
 
 
 
