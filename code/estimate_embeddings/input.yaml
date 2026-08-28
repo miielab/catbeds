@@ -1,0 +1,18 @@
+---
+# word embedding inputs
+data_dir: []
+model:
+  name: word2vec
+  num_models: 1
+  size: 300
+  window: 7
+  min_count: 30
+  workers: 5
+  sg: 1
+  hs: 1
+  negative: 0
+  epochs: 10
+  
+output:
+  output_model_dir: 
+...
